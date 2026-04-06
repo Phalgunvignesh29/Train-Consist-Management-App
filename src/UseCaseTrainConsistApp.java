@@ -1,39 +1,62 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * ========================================================
+ * MAIN CLASS - UseCase4TrainConsistMgmt
+ * ========================================================
+ *
+ * Use Case 4: Maintain Ordered Bogie Consist
+ *
+ * Description:
+ * This class models the physical chaining of train bogies
+ * using LinkedList for ordered operations.
+ *
+ * At this stage, the application:
+ * - Adds bogies in sequence
+ * - Inserts bogies at specific positions
+ * - Removes bogies from front and rear
+ * - Displays updated train structure
+ *
+ * This maps positional operations using LinkedList.
+ *
+ * @author Developer
+ * @version 4.0
+ */
 public class UseCaseTrainConsistApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=======================================");
-        System.out.println("UC2 - Add Passenger Bogies to Train");
-        System.out.println("=======================================\n");
+        System.out.println("========================================");
+        System.out.println(" UC4 - Maintain Ordered Bogie Consist ");
+        System.out.println("========================================\n");
 
-        // Create an ArrayList to hold passenger bogies
-        List<String> passengerBogies = new ArrayList<>();
+        // Create a LinkedList
+        // LinkedList maintains insertion order and allows fast inserts
+        List<String> trainConsist = new LinkedList<>();
 
-        // ---- CREATE (Add bogies) ----
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        // Add bogies in sequence
+        trainConsist.add("Engine");
+        trainConsist.add("Sleeper");
+        trainConsist.add("AC");
+        trainConsist.add("Cargo");
+        trainConsist.add("Guard");
 
-        System.out.println("After Adding Bogies:");
-        System.out.println("Passenger Bogies : " + passengerBogies);
+        System.out.println("Initial Train Consist:");
+        System.out.println(trainConsist);
 
-        // ---- DELETE (Remove bogie) ----
-        passengerBogies.remove("AC Chair");
+        // Insert 'Pantry Car' at position 2
+        trainConsist.add(2, "Pantry Car");
+        System.out.println("\nAfter Inserting 'Pantry Car' at position 2:");
+        System.out.println(trainConsist);
 
-        System.out.println("\nAfter Removing 'AC Chair':");
-        System.out.println("Passenger Bogies : " + passengerBogies);
+        // Remove first and last bogie
+        ((LinkedList<String>) trainConsist).removeFirst();
+        ((LinkedList<String>) trainConsist).removeLast();
 
-        // ---- READ (Check existence) ----
-        System.out.println("\nChecking if 'Sleeper' exists:");
-        System.out.println("Contains Sleeper? : " + passengerBogies.contains("Sleeper"));
+        System.out.println("\nAfter Removing First and Last Bogie:");
+        System.out.println(trainConsist);
 
-        // ---- FINAL STATE ----
-        System.out.println("\nFinal Train Passenger Consist:");
-        System.out.println(passengerBogies);
-
-        System.out.println("\nUC2 operations completed successfully...");
+        System.out.println("\nUC4 ordered consist operations completed...");
     }
 }
